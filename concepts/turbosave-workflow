@@ -1,0 +1,12 @@
+recieve the data from the serial connection (or usb if that may be the case)
+store that data onto the 128 mb usb drive in it's raw form (depending on how i get the serial connection to work, there may be a need to have base64 involved)
+convert that data into the waveform using the turbosave python script i modified from david beazley here on github (i can't math well, so i'll need to have help with the maximum buadrate possible on this medium)
+which brings us to the next step, to restore the harmonics needed to get the original square waveform back we need to use a schmidt trigger, the low level output pin will go directly into the head as when i accidentally fried the original cassette device's maon board amplifier section, so i have a way to pick up from the tape head but not put back into it without tying directly into the head with a switch between on / off and analog or digital encoding (aka the use of the schmitt trigger... or not)
+activate the erase head from the correct GPIO pin and keep it activated until the entire process finishes
+prompt user to press the play and record buttons on cassette device (via whatever means necessary, we hope to write an app for this that have a gui that will control the functions of the pi's part in all this one day)
+when the cassette mechanism button is triggered turn the motor on
+let the tape lead in for a few seconds with silence
+start playing back the audio generated from the data obtained from the serial interface in step 1
+when the data has completed it's process of being written to the tape, wait a few seconds and send silence to the head during this time
+stop the motor and notify the user that the data was written to the cassette tape (hopefully in a retrieveable way) 
+optionally ask the user if they'd like to confirm the data saved correctly by rewinding and replaying the saved data and seeing if it's an acceptable match to the data that was written, maybe explain why a save may have failed if it can't match the two sets of data
